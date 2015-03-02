@@ -1,0 +1,18 @@
+<%= link_to '戻る', read_path %>
+
+<table>
+  <tbody>
+    <% @data.each do |item| %>
+    <tr>
+      <td aline="right"><%= item[:num] %>: </td>
+      <td style="white-space: pre;font:"<tt><%= item[:line] %></tt></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @data, params: {authenticity_token: nil, utf8: nil, commit: nil, file: nil} %>
+
+<br><br>
+params が付与されている paginate:
+<%-# params を指定して params を調整しないと、最初に post で呼ばれたときの params が ページリンクに全て付与されてしまう -%>
+<%= paginate @data %>
